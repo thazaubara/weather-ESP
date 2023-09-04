@@ -1,5 +1,9 @@
 # weather-ESP
 
+<img src="assets/Screenshot 2023-09-04 at 21.19.54.png" alt="Screenshot 2023-09-04 at 21.19.54" />
+
+<img src="assets/Screenshot 2023-09-04 at 21.20.18.png" alt="Screenshot 2023-09-04 at 21.20.18" />
+
 Um ein ESP Board dazu zu bringen über MQTT im Homesens Netzwerk zu kommunizieren. Damit ich da nicht Raspberry Pis dazu brauche. Dafür sind Microcontroller besser geeignet.
 
 Schritt 1: Wetterdaten über Microcontroller, nicht über Raspi. Gilt für Indoor und Outdoor.
