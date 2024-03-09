@@ -86,7 +86,7 @@ void loop() {
   char msg[50];
   snprintf (msg, 50, "Alive since %ld milliseconds", millis());
   Serial.println(msg);
-  String topicMsg_string = "homesens/" + mqtt_subtopic + "/msg";
+  String topicMsg_string = "homesens/" + mqtt_subtopic + "/message";
   char topicMsg [50];
   topicMsg_string.toCharArray(topicMsg, sizeof(topicMsg));
   client.publish(topicMsg, msg);
