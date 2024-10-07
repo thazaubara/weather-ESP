@@ -5,9 +5,9 @@
 #include <Adafruit_BME280.h>
 
 // WIFI CREDENTIALS
-const char* SSID = "YOUR_SSID";
-const char* PSK = "YOUR_PASSWORD";
-const char* MQTT_BROKER = "MQTT_BROKER_IP";
+const char* SSID = "MartinRouterPing";
+const char* PSK = "_1HaveAStream";
+const char* MQTT_BROKER = "192.168.0.105";
 const int PORT = 1883;
 
 String main_topic = "homesens/ESP32/";
@@ -16,7 +16,7 @@ String main_topic = "homesens/ESP32/";
 const int DELAY = 2500;
 
 // MQTT STUFF
-String mqtt_subtopic = "wohnzimmer";
+String mqtt_subtopic = "balkon";
 WiFiClient espClient;
 PubSubClient client(espClient);
 String espClientNameString = "ESPClient_" + mqtt_subtopic;
