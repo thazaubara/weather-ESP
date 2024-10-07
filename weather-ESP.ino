@@ -10,6 +10,8 @@ const char* PSK = "YOUR_PASSWORD";
 const char* MQTT_BROKER = "MQTT_BROKER_IP";
 const int PORT = 1883;
 
+String main_topic = "homesens/ESP32/";
+
 // LOOP DELAY
 const int DELAY = 2500;
 
@@ -86,7 +88,7 @@ void loop() {
   char msg[50];
   snprintf (msg, 50, "Alive since %ld milliseconds", millis());
   Serial.println(msg);
-  String topicMsg_string = "homesens/" + mqtt_subtopic + "/message";
+  String topicMsg_string = main_topic + mqtt_subtopic + "/message";
   char topicMsg [50];
   topicMsg_string.toCharArray(topicMsg, sizeof(topicMsg));
   client.publish(topicMsg, msg);
@@ -95,7 +97,7 @@ void loop() {
   char bufIp [20];
   IPAddress ipaddr = WiFi.localIP();
   sprintf(bufIp, "%d.%d.%d.%d", ipaddr[0], ipaddr[1], ipaddr[2], ipaddr[3]);
-  String topicIp_string = "homesens/" + mqtt_subtopic + "/ip";
+  String topicIp_string = "homesens/ESP32/" + mqtt_subtopic + "/ip";
   char topicIp [50];
   topicIp_string.toCharArray(topicIp, sizeof(topicIp));
   client.publish(topicIp, bufIp);
@@ -104,7 +106,7 @@ void loop() {
   String mac = String(WiFi.macAddress());
   char bufMac [20];
   mac.toCharArray(bufMac, 20);
-  String topicMac_string = "homesens/" + mqtt_subtopic + "/mac";
+  String topicMac_string = main_topic + mqtt_subtopic + "/mac";
   char topicMac [50];
   topicMac_string.toCharArray(topicMac, sizeof(topicMac));
   client.publish(topicMac, bufMac);
@@ -113,7 +115,7 @@ void loop() {
   float temp = bme.readTemperature() + TEMP_SENS_OFFSET;
   char buftemp[20];
   sprintf (buftemp, "%f", temp);
-  String topicTemperature_string = "homesens/" + mqtt_subtopic + "/temperature";
+  String topicTemperature_string = main_topic + mqtt_subtopic + "/temperature";
   char topicTemperature [50];
   topicTemperature_string.toCharArray(topicTemperature, sizeof(topicTemperature));
   client.publish(topicTemperature, buftemp);
@@ -122,7 +124,7 @@ void loop() {
   float pressure = bme.readPressure()/100;
   char bufpressure[20];
   sprintf (bufpressure, "%f", pressure);
-  String topicPressure_string = "homesens/" + mqtt_subtopic + "/pressure";
+  String topicPressure_string = main_topic + mqtt_subtopic + "/pressure";
   char topicPressure [50];
   topicPressure_string.toCharArray(topicPressure, sizeof(topicPressure));
   client.publish(topicPressure, buftemp);
@@ -131,7 +133,7 @@ void loop() {
   float humidity = bme.readHumidity();
   char bufhumidity[20];
   sprintf (bufhumidity, "%f", humidity);
-  String topicHumidity_string = "homesens/" + mqtt_subtopic + "/humidity";
+  String topicHumidity_string = main_topic + mqtt_subtopic + "/humidity";
   char topicHumidity [50];
   topicHumidity_string.toCharArray(topicHumidity, sizeof(topicHumidity));
   client.publish(topicHumidity, buftemp);
